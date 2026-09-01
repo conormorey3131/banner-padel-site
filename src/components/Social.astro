@@ -1,0 +1,24 @@
+---
+import { site } from "../data/site";
+interface Props { tone?: "navy" | "light"; showHandle?: boolean }
+const { tone = "navy", showHandle = true } = Astro.props;
+
+const link =
+  tone === "light"
+    ? "text-bone/60 hover:text-saffron"
+    : "text-navy/50 hover:text-navy";
+const handle = tone === "light" ? "text-bone/50" : "text-muted";
+---
+
+<div class="flex items-center gap-5">
+  <a href={site.social.instagram} target="_blank" rel="noopener" aria-label="Banner Padel on Instagram" class={`transition-colors ${link}`}>
+    <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg>
+  </a>
+  <a href={site.social.facebook} target="_blank" rel="noopener" aria-label="Banner Padel on Facebook" class={`transition-colors ${link}`}>
+    <svg viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2-.1-2.1 0-3.5 1.3-3.5 3.6V11H8.5v3h2.4v7h2.6z"/></svg>
+  </a>
+  <a href={site.social.tiktok} target="_blank" rel="noopener" aria-label="Banner Padel on TikTok" class={`transition-colors ${link}`}>
+    <svg viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2 1.7 3.4 3.9 3.6v2.8c-1.5 0-2.8-.5-3.9-1.3v6.1c0 3.4-2.4 5.8-5.6 5.8-3 0-5.5-2.4-5.5-5.4 0-3.2 2.7-5.6 6-5.3v2.9c-1.7-.4-3.1.7-3.1 2.4 0 1.4 1.2 2.5 2.6 2.5 1.6 0 2.7-1.2 2.7-3V3h2.9z"/></svg>
+  </a>
+  {showHandle && <span class={`font-display text-sm ${handle}`}>{site.social.handle}</span>}
+</div>

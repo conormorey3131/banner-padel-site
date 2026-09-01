@@ -1,0 +1,25 @@
+---
+import Button from "./Button.astro";
+interface Props {
+  title?: string;
+  body?: string;
+}
+const {
+  title = "Grab a court.",
+  body = "Six full panoramic indoor courts, floodlit and weatherproof. Book online in under a minute — rackets and balls available to hire at the desk.",
+} = Astro.props;
+---
+
+<section class="bg-navy px-6 py-24 text-bone">
+  <div class="reveal mx-auto max-w-3xl text-center">
+    <p class="eyebrow mb-5 text-saffron">Ready to play</p>
+    <h2 class="text-4xl font-bold tracking-tight md:text-6xl">
+      {title}
+    </h2>
+    <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-bone/70">{body}</p>
+    <div class="mt-10 flex flex-wrap justify-center gap-4">
+      <Button href="/book/">Book a court</Button>
+      <Button href="/coaching/" variant="light">Book a lesson</Button>
+    </div>
+  </div>
+</section>

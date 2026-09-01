@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand — navy + saffron, the Banner County colours */
+  --color-navy: #061633;
+  --color-navy-700: #0a2044;
+  --color-navy-500: #1b3766;
+  --color-saffron: #ffd502;
+  --color-saffron-600: #e6bf02;
+
+  /* Neutrals — warm, so white never reads clinical */
+  --color-bone: #faf9f6;
+  --color-bone-200: #f0eee8;
+  --color-line: #e3e0d8;
+  --color-muted: #5c6b83;
+
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Editorial display sizes — larger and tighter than Tailwind's defaults */
+  --text-display: 4.5rem;
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.035em;
+  --text-hero: 6.5rem;
+  --text-hero--line-height: 0.92;
+  --text-hero--letter-spacing: -0.04em;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bone);
+    color: var(--color-navy);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-saffron);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Sections reveal on scroll; JS adds .is-in once observed. */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}

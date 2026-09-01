@@ -1,36 +1,46 @@
-# Banner Padel — Website
+# Banner Padel
 
-Pre-launch website for [Banner Padel](https://www.bannerpadel.ie/), Clare's first indoor padel club in Ennis, Co. Clare.
+Website for Banner Padel — Clare's first indoor padel club, Ennis, Co. Clare.
 
-A fast, dependency-free static site: plain HTML, CSS and vanilla JavaScript. No build step required.
+Built with [Astro](https://astro.build) and Tailwind CSS v4. Static output.
+
+## Running it
+
+```sh
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # static build into dist/
+npm run preview  # serve the build
+```
 
 ## Structure
 
 ```
-index.html                     # Home — opening soon, club highlights, mailing list signup
-about.html                     # What is Padel Tennis?
-contact.html                   # Mailing list signup
-styles.css                     # all styling
-script.js                      # signup form handling + footer year
-favicon.svg                    # padel-ball mark
-images/                        # logo + court photos
-googleca20b32ddd9b190c.html    # Google Search Console verification
+src/
+  assets/       photography and logos (optimised at build time by astro:assets)
+  components/   Header, Footer, Button, Section, Feature, BookingCta, PageHero, Social
+  data/site.ts  address, hours, booking URL, socials, nav — single source of truth
+  layouts/      Layout.astro — head, SEO meta, JSON-LD, scroll reveals
+  pages/        index, book, coaching, venue, what-is-padel, contact
+  styles/       global.css — Tailwind theme tokens (navy + saffron)
+legacy-site/    the previous static HTML site, kept for content reference
 ```
 
-## Run locally
+## Design
 
-Open `index.html` directly in a browser, or serve it:
-
-```bash
-python3 -m http.server 8000
-# → http://localhost:8000
-```
+Navy `#061633` and saffron `#ffd502` — the Banner County colours — on a warm off-white
+base. Sora for display type, Inter for body. Photography does the heavy lifting;
+saffron is reserved for calls to action.
 
 ## Before launch
 
-- **Address & contact**: add the full street address, Eircode, phone and email once confirmed (also update the JSON-LD block in `index.html` for local SEO).
-- **Photos**: swap the stock court photos in `images/` for real photography of the facility when available.
+- [ ] Fill in the `TODO` fields in `src/data/site.ts` (address, phone, email, real opening hours)
+- [ ] Point the contact form at a real endpoint — `src/pages/contact.astro` currently posts to `#`
+- [ ] Confirm coaching pricing in `src/pages/coaching.astro` (currently `TODO`)
+- [ ] Add an OG share image and more photography (café, lounge, players, exterior)
+- [ ] Move the `bannerpadel.ie` domain over from the `banner-padel` repo when ready
 
-## Deploy
+## Domain
 
-Any static host works: GitHub Pages, Netlify, Vercel, Cloudflare Pages. For GitHub Pages, enable Pages on the `main` branch root in the repo settings.
+The live site currently runs from the separate `banner-padel` repo, which holds the
+`CNAME` for `www.bannerpadel.ie`. This repo has no CNAME on purpose.

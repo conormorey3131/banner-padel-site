@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  icon: "court" | "coach" | "cafe" | "league" | "gear" | "parking" | "locker" | "junior";
+}
+const { title, body, icon } = Astro.props;
+
+const paths: Record<Props["icon"], string> = {
+  court: "M3 5h18v14H3zM12 5v14M3 12h18",
+  coach: "M12 7a3 3 0 100-6 3 3 0 000 6zM4 21v-1a8 8 0 0116 0v1",
+  cafe: "M4 8h13v6a5 5 0 01-5 5H9a5 5 0 01-5-5zM17 9h2a2 2 0 010 4h-2M4 3v2M9 2v3M14 3v2",
+  league: "M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0zM7 5H4v2a3 3 0 003 3M17 5h3v2a3 3 0 01-3 3",
+  gear: "M6 12a6 6 0 1112 0 6 6 0 01-12 0zM12 18v4M9 22h6",
+  parking: "M4 3h16v18H4zM10 17V8h3a3 3 0 010 6h-3",
+  locker: "M5 3h14v18H5zM12 3v18M8 11h1M15 11h1",
+  junior: "M9 11a3 3 0 100-6 3 3 0 000 6zM3 20v-1a6 6 0 0112 0v1M17 8h4M19 6v4",
+};
+---
+
+<div class="reveal group border-t border-line pt-7">
+  <div
+    class="mb-6 grid h-12 w-12 place-items-center rounded-xl bg-navy text-saffron transition-transform duration-300 group-hover:-translate-y-1"
+  >
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d={paths[icon]} />
+    </svg>
+  </div>
+  <h3 class="font-display text-xl font-semibold tracking-tight">{title}</h3>
+  <p class="mt-3 leading-relaxed text-muted">{body}</p>
+</div>

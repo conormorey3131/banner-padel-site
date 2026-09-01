@@ -1,0 +1,123 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import Feature from "../components/Feature.astro";
+import BookingCta from "../components/BookingCta.astro";
+import court from "../assets/padel-court-ennis.webp";
+import { site } from "../data/site";
+
+const firstVisit = [
+  { title: "Arrive ten minutes early", body: "Enough time to check in at the desk, pick up hire rackets and get a look at the court before your slot starts." },
+  { title: "Wear clean trainers", body: "Non-marking soles only. Court shoes or trail runners grip best, but any clean trainer is fine to start." },
+  { title: "Bring a water bottle", body: "There is water on site and the café is open, but a bottle courtside saves you the walk between games." },
+  { title: "No kit needed", body: "Rackets and balls are available to hire at the desk. Turn up with trainers and you are ready to play." },
+];
+---
+
+<Layout
+  title="The Venue"
+  description="Inside Banner Padel, Ennis — six full panoramic indoor courts, a café and lounge, changing facilities, racket hire and free parking in Co. Clare."
+>
+  <PageHero
+    eyebrow="The venue"
+    title="Built to be worth staying in."
+    intro="Six full panoramic indoor courts under one roof in Ennis, with a café and lounge that make it easy to turn a 90 minute booking into an evening."
+  />
+
+  <section class="border-b border-line">
+    <Image
+      src={court}
+      alt="Inside Banner Padel — indoor panoramic padel court in Ennis, Co. Clare"
+      widths={[720, 1200, 1600]}
+      sizes="100vw"
+      class="h-[320px] w-full object-cover md:h-[520px]"
+      loading="lazy"
+    />
+  </section>
+
+  <Section
+    tone="bone"
+    eyebrow="Facilities"
+    title="Everything the session needs."
+    intro="Nothing here is an afterthought — the courts, the lighting and the space around them were all specified together."
+  >
+    <div class="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      <Feature
+        icon="court"
+        title="Six panoramic courts"
+        body="Full glass-backed panoramic courts with proper indoor lighting and consistent surfaces, so the bounce is the same on every court every night."
+      />
+      <Feature
+        icon="cafe"
+        title="Café & lounge"
+        body="Coffee, cold drinks and food, with seating that looks straight onto the courts. The best place in Clare to watch a match you're not in."
+      />
+      <Feature
+        icon="locker"
+        title="Changing facilities"
+        body="Changing rooms and showers on site, so you can come straight from work and go straight on somewhere afterwards."
+      />
+      <Feature
+        icon="gear"
+        title="Racket & ball hire"
+        body="Hire rackets and balls at the desk. Handy for first-timers and for the friend who says they'll definitely buy their own soon."
+      />
+      <Feature
+        icon="parking"
+        title="Parking on site"
+        body="Off-street parking right at the door, which matters when there are four of you arriving separately for a 7pm slot."
+      />
+      <Feature
+        icon="league"
+        title="Events & private hire"
+        body="Leagues, Americanos, tournaments, corporate days and private events — we can take over multiple courts at once."
+      />
+    </div>
+  </Section>
+
+  <Section tone="white" eyebrow="First visit" title="What to expect.">
+    <div class="mt-14 grid gap-px overflow-hidden rounded-2xl bg-line sm:grid-cols-2 lg:grid-cols-4">
+      {
+        firstVisit.map((item) => (
+          <div class="reveal bg-white p-8">
+            <h3 class="font-display text-lg font-semibold tracking-tight">{item.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted">{item.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section tone="navy" eyebrow="Opening hours" title="When we're open.">
+    <div class="mt-12 grid gap-12 md:grid-cols-2">
+      <dl class="reveal divide-y divide-white/10 border-y border-white/10">
+        {
+          site.hours.map((row) => (
+            <div class="flex items-center justify-between gap-6 py-5">
+              <dt class="font-display font-semibold">{row.days}</dt>
+              <dd class="tabular-nums text-bone/65">{row.time}</dd>
+            </div>
+          ))
+        }
+      </dl>
+      <div class="reveal">
+        <p class="leading-relaxed text-bone/70">
+          Live court availability is always the most accurate picture of when we are
+          open — if a slot shows in the booking calendar, you can play it.
+        </p>
+        <p class="mt-5 leading-relaxed text-bone/70">
+          Bank holidays and event days can differ. We post any changes on
+          {" "}<a href={site.social.instagram} target="_blank" rel="noopener" class="text-saffron underline-offset-4 hover:underline">Instagram</a>{" "}
+          first.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <BookingCta
+    title="Come and see it."
+    body="Book a court, come for a lesson, or just call in for a coffee and watch a game from the lounge."
+  />
+</Layout>

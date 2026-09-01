@@ -1,0 +1,74 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import Button from "../components/Button.astro";
+import { site } from "../data/site";
+
+const steps = [
+  { n: "01", title: "Pick your slot", body: "Choose a date, a court and a 60 or 90 minute slot in the calendar below." },
+  { n: "02", title: "Pay online", body: "Book and pay through Playtomic. You can split the cost between all four players in the app." },
+  { n: "03", title: "Turn up and play", body: "Arrive ten minutes early. Rackets and balls can be hired at the desk if you need them." },
+];
+---
+
+<Layout
+  title="Book a Court"
+  description="Book an indoor padel court at Banner Padel in Ennis, Co. Clare. Live availability, online payment and racket hire available."
+>
+  <PageHero
+    eyebrow="Book"
+    title="Find a court."
+    intro="Live availability across all our indoor panoramic courts. Book a 60 or 90 minute slot, pay online, and split it with the other three in the app."
+  />
+
+  <Section tone="bone" class="!py-16">
+    <div class="grid gap-10 md:grid-cols-3">
+      {
+        steps.map((step) => (
+          <div class="reveal">
+            <p class="font-display text-sm font-bold tracking-widest text-saffron-600">{step.n}</p>
+            <h2 class="mt-3 font-display text-xl font-semibold tracking-tight">{step.title}</h2>
+            <p class="mt-2.5 leading-relaxed text-muted">{step.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <section id="availability" class="bg-white px-6 pb-24">
+    <div class="mx-auto max-w-6xl">
+      <div class="overflow-hidden rounded-2xl border border-line bg-bone">
+        <iframe
+          src={site.booking}
+          title="Live court availability and booking for Banner Padel"
+          class="block h-[900px] w-full border-0"
+          loading="lazy"
+          allow="payment"></iframe>
+      </div>
+      <p class="mt-5 text-center text-sm text-muted">
+        Booking calendar not loading?
+        <a href={site.booking} target="_blank" rel="noopener" class="font-medium text-navy underline underline-offset-4">
+          Open it in a new tab
+        </a>.
+      </p>
+    </div>
+  </section>
+
+  <Section tone="navy" class="!py-20">
+    <div class="reveal grid gap-10 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Short of a fourth?</h2>
+        <p class="mt-5 leading-relaxed text-bone/70">
+          You do not need a full four to play here. Our socials and Americanos are built
+          for turning up on your own, and the club leagues will find you a level. Message
+          us on {site.social.handle} and we will point you at the right night.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-4 md:justify-end">
+        <Button href="/contact/" variant="light">Get in touch</Button>
+        <Button href="/coaching/">Try a group session</Button>
+      </div>
+    </div>
+  </Section>
+</Layout>

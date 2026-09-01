@@ -1,0 +1,171 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import Button from "../components/Button.astro";
+import BookingCta from "../components/BookingCta.astro";
+import court from "../assets/padel-court-ennis.webp";
+import { site } from "../data/site";
+
+// TODO: confirm session lengths and pricing with the club before launch.
+const programmes = [
+  {
+    name: "One-to-one",
+    who: "Any level",
+    price: "TODO",
+    body: "You and a coach for a full hour. The fastest way to fix a specific shot — the bandeja, the wall defence, the serve you never trust.",
+    points: ["60 minutes", "Video feedback on request", "Rackets provided"],
+    featured: false,
+  },
+  {
+    name: "Group clinics",
+    who: "Beginner to intermediate",
+    price: "TODO",
+    body: "Small groups working through the shots that actually decide padel points, with plenty of live play rather than queueing for a feed.",
+    points: ["90 minutes", "Max 4 players per coach", "Weekly blocks"],
+    featured: true,
+  },
+  {
+    name: "Junior programme",
+    who: "Ages 8–16",
+    price: "TODO",
+    body: "Structured coaching for kids, built around games rather than drills. Fast, social and far more forgiving to learn than tennis.",
+    points: ["Term-time blocks", "All equipment provided", "Beginner groups available"],
+    featured: false,
+  },
+];
+
+const path = [
+  { step: "Never played", body: "Start on a beginner group clinic. You will serve, rally and use the back wall inside the first session." },
+  { step: "Played a few times", body: "Move into the improver groups, where the focus shifts to positioning and knowing when to lob." },
+  { step: "Playing weekly", body: "One-to-ones to sharpen individual shots, plus club leagues to test them under pressure." },
+  { step: "Competing", body: "Tournament prep, pairs work and tactical sessions with a coach who has watched you play." },
+];
+---
+
+<Layout
+  title="Coaching & Lessons"
+  description="Padel coaching in Ennis, Co. Clare — one-to-one lessons, group clinics and junior programmes at Banner Padel, for complete beginners through to competitive players."
+>
+  <PageHero
+    eyebrow="Coaching"
+    title="Get good faster than you'd expect."
+    intro="Padel is easy to start and deep to master. An hour with a coach early on saves you months of picking up habits you'll only have to unlearn."
+  />
+
+  <Section tone="bone" eyebrow="Programmes" title="Pick your session.">
+    <div class="mt-14 grid gap-7 lg:grid-cols-3">
+      {
+        programmes.map((programme) => (
+          <div
+            class:list={[
+              "reveal flex flex-col rounded-2xl p-8 md:p-9",
+              programme.featured
+                ? "bg-navy text-bone ring-2 ring-saffron"
+                : "border border-line bg-white",
+            ]}
+          >
+            {programme.featured && (
+              <p class="eyebrow mb-5 text-saffron">Most popular</p>
+            )}
+            <h2 class="font-display text-2xl font-bold tracking-tight">{programme.name}</h2>
+            <p
+              class:list={[
+                "mt-1.5 text-sm",
+                programme.featured ? "text-bone/55" : "text-muted",
+              ]}
+            >
+              {programme.who}
+            </p>
+            <p
+              class:list={[
+                "mt-6 flex-1 leading-relaxed",
+                programme.featured ? "text-bone/75" : "text-muted",
+              ]}
+            >
+              {programme.body}
+            </p>
+            <ul class="mt-7 space-y-2.5">
+              {programme.points.map((point) => (
+                <li class="flex items-start gap-3">
+                  <svg class="mt-1 shrink-0 text-saffron-600" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 8.5l3.5 3.5L13 4" />
+                  </svg>
+                  <span
+                    class:list={[
+                      "text-sm",
+                      programme.featured ? "text-bone/80" : "text-navy/75",
+                    ]}
+                  >
+                    {point}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-8">
+              <Button href="/contact/" variant={programme.featured ? "light" : "outline"} class="w-full">
+                Enquire
+              </Button>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <p class="reveal mt-8 text-sm text-muted">
+      Pricing is being finalised — contact us for current rates and available blocks.
+    </p>
+  </Section>
+
+  <Section tone="white" eyebrow="The pathway" title="Wherever you're starting from.">
+    <div class="mt-14 grid gap-px overflow-hidden rounded-2xl bg-line sm:grid-cols-2 lg:grid-cols-4">
+      {
+        path.map((stage, i) => (
+          <div class="reveal bg-white p-8">
+            <p class="font-display text-sm font-bold tracking-widest text-saffron-600">
+              0{i + 1}
+            </p>
+            <h3 class="mt-3 font-display text-lg font-semibold tracking-tight">{stage.step}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted">{stage.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <section class="bg-bone px-6 py-20 md:py-28">
+    <div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+      <div class="reveal overflow-hidden rounded-2xl">
+        <Image
+          src={court}
+          alt="Indoor padel court at Banner Padel, Ennis"
+          widths={[480, 720, 1024]}
+          sizes="(min-width: 1024px) 46vw, 92vw"
+          class="h-[380px] w-full object-cover md:h-[520px]"
+          loading="lazy"
+        />
+      </div>
+      <div class="reveal">
+        <p class="eyebrow mb-5 text-navy/45">Corporate & groups</p>
+        <h2 class="text-4xl font-bold tracking-tight md:text-5xl">
+          Bring the whole team.
+        </h2>
+        <p class="mt-6 text-lg leading-relaxed text-muted">
+          Team days, birthdays, stags, hens, club nights and work socials. We can put
+          coaches on multiple courts at once, run an Americano format so nobody sits out,
+          and have the café ready afterwards. It works just as well for a group who have
+          never held a racket as for one that plays weekly.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-4">
+          <Button href="/contact/">Enquire about a group</Button>
+          <Button href={site.social.instagram} variant="outline" external>See it on Instagram</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <BookingCta
+    title="Book your first lesson."
+    body="Tell us your level and what you want out of it, and we'll put you with the right coach and the right group."
+  />
+</Layout>

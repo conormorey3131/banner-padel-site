@@ -1,0 +1,50 @@
+---
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+  tone?: "bone" | "white" | "navy";
+  id?: string;
+  align?: "left" | "center";
+  class?: string;
+}
+const {
+  eyebrow,
+  title,
+  intro,
+  tone = "bone",
+  id,
+  align = "left",
+  class: klass = "",
+} = Astro.props;
+
+const tones = {
+  bone: "bg-bone text-navy",
+  white: "bg-white text-navy",
+  navy: "bg-navy text-bone",
+};
+const introTone = tone === "navy" ? "text-bone/70" : "text-muted";
+const eyebrowTone = tone === "navy" ? "text-saffron" : "text-navy/45";
+---
+
+<section id={id} class={`${tones[tone]} px-6 py-20 md:py-28 ${klass}`}>
+  <div class="mx-auto max-w-6xl">
+    {
+      (eyebrow || title || intro) && (
+        <header
+          class:list={[
+            "reveal max-w-2xl",
+            align === "center" && "mx-auto text-center",
+          ]}
+        >
+          {eyebrow && <p class={`eyebrow mb-4 ${eyebrowTone}`}>{eyebrow}</p>}
+          {title && (
+            <h2 class="text-4xl font-bold tracking-tight md:text-5xl">{title}</h2>
+          )}
+          {intro && <p class={`mt-5 text-lg leading-relaxed ${introTone}`}>{intro}</p>}
+        </header>
+      )
+    }
+    <slot />
+  </div>
+</section>

@@ -1,0 +1,147 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import BookingCta from "../components/BookingCta.astro";
+import net from "../assets/padel-net.webp";
+
+const rules = [
+  { title: "Always doubles", body: "Four players, two a side. It is a social sport by design — you are never on court on your own." },
+  { title: "The walls are in play", body: "The court is enclosed in glass and mesh. Let the ball bounce, then play it off the back wall like squash." },
+  { title: "Underarm serve", body: "You serve underarm, below waist height, diagonally into the opposite box. No serve to be intimidated by." },
+  { title: "Tennis scoring", body: "15, 30, 40, game. If you have ever watched a set of tennis, you already know how to keep score." },
+  { title: "Solid, stringless rackets", body: "Short, perforated and light. Far more forgiving than a tennis racket and much easier to find the middle of." },
+  { title: "Smaller court", body: "20m by 10m — about a third smaller than tennis. Less running, more rallies, longer points." },
+];
+
+const faqs = [
+  {
+    q: "Do I need to be fit to play padel?",
+    a: "No. The court is small, the points are quick and you play with three other people, so the workload is shared. Plenty of our members had not played a racket sport in years before starting.",
+  },
+  {
+    q: "Do I need my own racket?",
+    a: "Not at all. Rackets and balls are available to hire at the desk. Most people hire for their first few sessions before deciding what suits them.",
+  },
+  {
+    q: "What should I wear?",
+    a: "Normal sportswear and clean, non-marking trainers. Court shoes or trail-style runners give the best grip, but any trainer will do to start.",
+  },
+  {
+    q: "I have never played. Where do I start?",
+    a: "A beginner group session or a one-to-one lesson. An hour with a coach will get you serving, rallying and using the back wall, which is the part that catches new players out.",
+  },
+  {
+    q: "How long is a booking?",
+    a: "Courts are booked in 60 or 90 minute slots. Ninety minutes is the sweet spot for four players who want a proper game.",
+  },
+];
+---
+
+<Layout
+  title="What is Padel"
+  description="Padel is the world's fastest growing racket sport — doubles-only, played on an enclosed glass court, and easy to pick up on day one. Here's how it works."
+>
+  <PageHero
+    eyebrow="The basics"
+    title="Tennis rules. Squash walls. Ten minutes to learn."
+    intro="Padel is the fastest growing sport in the world, and the reason is simple: almost anyone can have a real rally in their first session. Here is everything you need before you walk on court."
+  />
+
+  <section class="relative isolate overflow-hidden border-b border-line">
+    <Image
+      src={net}
+      alt="The net inside an enclosed padel court"
+      widths={[720, 1200, 1920]}
+      sizes="100vw"
+      class="h-[300px] w-full object-cover md:h-[440px]"
+      loading="lazy"
+    />
+  </section>
+
+  <Section
+    tone="bone"
+    eyebrow="How it works"
+    title="Six things and you're playing."
+  >
+    <div class="mt-14 grid gap-x-10 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        rules.map((rule) => (
+          <div class="reveal border-t border-line pt-6">
+            <h3 class="font-display text-lg font-semibold tracking-tight">{rule.title}</h3>
+            <p class="mt-3 leading-relaxed text-muted">{rule.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section tone="white" eyebrow="Why people get hooked" title="It rewards you before you're any good.">
+    <div class="mt-12 grid gap-12 md:grid-cols-2">
+      <div class="reveal space-y-5 text-lg leading-relaxed text-muted">
+        <p>
+          Most racket sports make you earn the fun. You spend the first month hitting
+          into the net before a rally lasts long enough to feel like a game. Padel does
+          not work like that.
+        </p>
+        <p>
+          The court is small, the racket is forgiving and the walls keep the ball alive,
+          so points last. Beginners get long rallies on their first night, and better
+          players still have somewhere to go — the tactical ceiling is genuinely high.
+        </p>
+        <p>
+          It is also unusually good at mixing levels. A strong player and a first-timer
+          can share a court and both have a game, which is exactly why it spreads through
+          friend groups and workplaces the way it does.
+        </p>
+      </div>
+      <div class="reveal rounded-2xl bg-navy p-9 text-bone md:p-11">
+        <p class="eyebrow mb-6 text-saffron">Good to know</p>
+        <ul class="space-y-5">
+          <li class="flex gap-4">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-saffron"></span>
+            <span class="leading-relaxed text-bone/80">Low impact on the joints compared with tennis or squash.</span>
+          </li>
+          <li class="flex gap-4">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-saffron"></span>
+            <span class="leading-relaxed text-bone/80">Ages roughly 8 to 80 all play it, often against each other.</span>
+          </li>
+          <li class="flex gap-4">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-saffron"></span>
+            <span class="leading-relaxed text-bone/80">Indoors here, so nothing is ever called off for rain.</span>
+          </li>
+          <li class="flex gap-4">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-saffron"></span>
+            <span class="leading-relaxed text-bone/80">A 90 minute game is as social as it is sporting.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="bone" eyebrow="Questions" title="Before your first session.">
+    <div class="mt-12 divide-y divide-line border-y border-line">
+      {
+        faqs.map((faq) => (
+          <details class="group reveal py-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-lg font-semibold tracking-tight marker:hidden">
+              {faq.q}
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-navy/15 text-navy transition-transform duration-300 group-open:rotate-45">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                  <path d="M7 2v10M2 7h10" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-4 max-w-2xl leading-relaxed text-muted">{faq.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </Section>
+
+  <BookingCta
+    title="Try it once."
+    body="Book a court with three friends, or start with a beginner lesson and let a coach do the explaining. Either way you'll know within an hour."
+  />
+</Layout>

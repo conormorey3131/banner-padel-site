@@ -1,0 +1,228 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import Section from "../components/Section.astro";
+import Feature from "../components/Feature.astro";
+import BookingCta from "../components/BookingCta.astro";
+import court from "../assets/padel-court-ennis.webp";
+import net from "../assets/padel-net.webp";
+
+const stats = [
+  { value: "6", label: "Panoramic courts" },
+  { value: "100%", label: "Indoor & floodlit" },
+  { value: "7 days", label: "Open every week" },
+  { value: "All", label: "Levels welcome" },
+];
+
+const waysToPlay = [
+  {
+    eyebrow: "Pay & play",
+    title: "Book a court",
+    body: "Grab 60 or 90 minutes with three friends. Courts are live on Playtomic — pick a slot, pay online, turn up and play.",
+    href: "/book/",
+    cta: "See availability",
+  },
+  {
+    eyebrow: "Get better",
+    title: "Coaching",
+    body: "One-to-one sessions, group clinics and junior programmes. The quickest way from never-held-a-racket to holding your own.",
+    href: "/coaching/",
+    cta: "Explore coaching",
+  },
+  {
+    eyebrow: "Get competitive",
+    title: "Leagues & socials",
+    body: "Americanos, club leagues, tournaments and social nights. Come on your own and leave with a regular four.",
+    href: "/contact/",
+    cta: "Get on the list",
+  },
+];
+---
+
+<Layout
+  title="Banner Padel — Clare's first indoor padel club, Ennis"
+  description="Banner Padel is Clare's first indoor padel club. Six full panoramic indoor courts in Ennis, with coaching, a café and lounge, leagues and social nights. Book online."
+  bareTitle
+>
+  <!-- Hero: editorial type left, full-height court photography right -->
+  <section class="relative overflow-hidden bg-bone">
+    <div class="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
+      <div>
+        <p class="inline-flex items-center gap-2.5 rounded-full bg-saffron/15 px-4 py-2">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-saffron opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-saffron-600"></span>
+          </span>
+          <span class="eyebrow text-navy">Now open in Ennis</span>
+        </p>
+
+        <h1 class="mt-7 text-[clamp(2.75rem,7vw,5.5rem)] font-extrabold leading-[0.95] tracking-[-0.04em]">
+          Clare's first<br />
+          <span class="text-navy/35">indoor</span> padel club.
+        </h1>
+
+        <p class="mt-7 max-w-lg text-lg leading-relaxed text-muted md:text-xl">
+          Six full panoramic courts under one roof, a café and lounge to sit around
+          afterwards, and coaching for everyone from complete beginners up. The fastest
+          growing sport in the world has landed in the Banner County.
+        </p>
+
+        <div class="mt-10 flex flex-wrap gap-4">
+          <Button href="/book/">Book a court</Button>
+          <Button href="/what-is-padel/" variant="outline">New to padel? →</Button>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="overflow-hidden rounded-2xl">
+          <Image
+            src={court}
+            alt="Rackets, balls and the Banner Padel sign at the net of an indoor court in Ennis"
+            widths={[480, 720, 1024]}
+            sizes="(min-width: 1024px) 46vw, 92vw"
+            class="h-[440px] w-full object-cover md:h-[560px] lg:h-[620px]"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+        <!-- Saffron rule echoing the court's tramlines -->
+        <div class="absolute -bottom-3 -left-3 hidden h-24 w-24 rounded-bl-2xl border-b-4 border-l-4 border-saffron lg:block"></div>
+      </div>
+    </div>
+
+    <!-- Stat strip -->
+    <div class="border-y border-line bg-white">
+      <dl class="mx-auto grid max-w-6xl grid-cols-2 gap-y-8 px-6 py-10 md:grid-cols-4">
+        {
+          stats.map((stat) => (
+            <div class="reveal">
+              <dt class="sr-only">{stat.label}</dt>
+              <dd>
+                <span class="block font-display text-3xl font-extrabold tracking-tight md:text-4xl">
+                  {stat.value}
+                </span>
+                <span class="mt-1.5 block text-sm text-muted">{stat.label}</span>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- Positioning statement -->
+  <Section tone="bone">
+    <div class="reveal mx-auto max-w-3xl text-center">
+      <p class="eyebrow mb-6 text-navy/45">The Banner standard</p>
+      <p class="text-[clamp(1.5rem,3.2vw,2.25rem)] font-display font-semibold leading-[1.3] tracking-tight">
+        Padel is the easiest racket sport to fall in love with. Four players, glass
+        walls, one rally that goes on far longer than it should — and everyone,
+        whatever their level, in the same game.
+      </p>
+      <p class="mt-8 text-lg leading-relaxed text-muted">
+        We built Banner Padel so Clare would not have to travel to play it. Full
+        panoramic glass courts, proper lighting, no weather to work around, and a
+        clubhouse worth staying in afterwards.
+      </p>
+    </div>
+  </Section>
+
+  <!-- Ways to play -->
+  <Section
+    tone="white"
+    eyebrow="Ways to play"
+    title="However you want to play it."
+    intro="Book with your own four, come alone to a social, or start from scratch with a coach. All three work here."
+  >
+    <div class="mt-14 grid gap-px overflow-hidden rounded-2xl bg-line md:grid-cols-3">
+      {
+        waysToPlay.map((way) => (
+          <a href={way.href} class="reveal group flex flex-col bg-white p-8 transition-colors hover:bg-bone md:p-10">
+            <p class="eyebrow text-navy/40">{way.eyebrow}</p>
+            <h3 class="mt-4 font-display text-2xl font-bold tracking-tight">{way.title}</h3>
+            <p class="mt-4 flex-1 leading-relaxed text-muted">{way.body}</p>
+            <span class="mt-7 inline-flex items-center gap-2 font-display text-sm font-semibold text-navy">
+              {way.cta}
+              <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- What is padel, with full-bleed net photography -->
+  <section class="relative isolate overflow-hidden">
+    <Image
+      src={net}
+      alt="The net inside an enclosed padel court"
+      widths={[720, 1200, 1920]}
+      sizes="100vw"
+      class="absolute inset-0 -z-10 h-full w-full object-cover"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-r from-navy/95 via-navy/85 to-navy/55"></div>
+
+    <div class="mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <div class="reveal max-w-xl text-bone">
+        <p class="eyebrow mb-5 text-saffron">Never played?</p>
+        <h2 class="text-4xl font-bold tracking-tight md:text-5xl">
+          You'll be rallying inside ten minutes.
+        </h2>
+        <p class="mt-6 text-lg leading-relaxed text-bone/75">
+          Padel is doubles-only, played on an enclosed court about a third smaller than
+          a tennis court. The walls are in play, like squash. The rackets are solid and
+          light, the serve is underarm, and the scoring is the same as tennis. It is
+          genuinely one of the easiest sports there is to pick up on day one.
+        </p>
+        <div class="mt-9">
+          <Button href="/what-is-padel/" variant="light">How padel works</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities -->
+  <Section
+    tone="bone"
+    eyebrow="At the club"
+    title="More than four walls and a net."
+    intro="A place to warm up, wind down and stay a while after the last point."
+  >
+    <div class="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      <Feature
+        icon="court"
+        title="Six panoramic courts"
+        body="Full glass-backed panoramic courts, indoors and floodlit, so the session goes ahead whatever Clare weather is doing."
+      />
+      <Feature
+        icon="cafe"
+        title="Café & lounge"
+        body="Proper coffee, cold drinks and somewhere comfortable to sit and watch the court while you wait on your slot."
+      />
+      <Feature
+        icon="coach"
+        title="Coaching for all levels"
+        body="One-to-one and group lessons from first-timers through to players wanting to sharpen a specific shot."
+      />
+      <Feature
+        icon="junior"
+        title="Junior programmes"
+        body="Structured coaching for kids who want a racket sport that is fast, social and forgiving to learn."
+      />
+      <Feature
+        icon="league"
+        title="Leagues & tournaments"
+        body="Club leagues, Americanos and open tournaments running through the year for every standard."
+      />
+      <Feature
+        icon="gear"
+        title="Racket & ball hire"
+        body="No kit, no problem. Rackets and balls are available to hire at the desk, so you can just show up and play."
+      />
+    </div>
+  </Section>
+
+  <BookingCta />
+</Layout>
