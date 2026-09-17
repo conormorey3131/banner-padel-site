@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#061633"/>
+  <g fill="none" stroke="#ffd502" stroke-width="3" opacity="0.17" transform="translate(845 -75) rotate(20)">
+    <rect width="400" height="760" rx="8"/><path d="M0 380h400M0 190h400M0 570h400M200 190v380"/>
+  </g>
+  <rect x="72" y="72" width="64" height="8" rx="4" fill="#ffd502"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="72" y="180" fill="#faf9f6" font-size="76" font-weight="800" letter-spacing="2">BANNER <tspan fill="#ffd502">PADEL</tspan></text>
+    <text x="72" y="285" fill="#faf9f6" font-size="48" font-weight="700">Your next game starts here.</text>
+    <text x="75" y="350" fill="#c1cada" font-size="30">Indoor padel · Ennis, Co. Clare</text>
+    <rect x="72" y="421" width="328" height="62" rx="31" fill="#ffd502"/>
+    <text x="236" y="461" fill="#061633" font-size="24" font-weight="700" text-anchor="middle">PLAY · MEET · BELONG</text>
+    <text x="75" y="566" fill="#faf9f6" font-size="25">bannerpadel.ie</text>
+  </g>
+</svg>
