@@ -19,9 +19,11 @@ import { site } from "../data/site";
 
   <Section tone="bone" class="!pt-16">
     <div class="grid gap-14 lg:grid-cols-[1fr_0.85fr] lg:gap-20">
-      <!-- Enquiry form. TODO: point action at a real form endpoint (Formspree,
-           Netlify Forms or similar) before launch — it currently does nothing. -->
-      <form class="reveal space-y-6" method="POST" action="#">
+      <form class="reveal space-y-6" method="POST" action={`https://formsubmit.co/${site.email}`}>
+        <input type="hidden" name="_subject" value="Banner Padel — website enquiry" />
+        <input type="hidden" name="_next" value={`${site.url}/thank-you/`} />
+        <input type="hidden" name="_template" value="table" />
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
         <div class="grid gap-6 sm:grid-cols-2">
           <div>
             <label for="name" class="mb-2 block font-display text-sm font-semibold">Name</label>
@@ -75,6 +77,12 @@ import { site } from "../data/site";
             placeholder="Tell us a bit about what you're after — level, group size, preferred days."></textarea>
         </div>
 
+        <p class="text-sm leading-relaxed text-muted">
+          We’ll use your details to respond to your enquiry. Submissions are handled by FormSubmit,
+          which may ask you to complete a spam check. Read our
+          <a href="/privacy/" class="underline underline-offset-4">privacy notice</a>.
+          You can also email <a href={`mailto:${site.email}`} class="underline underline-offset-4">{site.email}</a> directly.
+        </p>
         <button
           type="submit"
           class="inline-flex items-center justify-center rounded-full bg-saffron px-8 py-4 font-display text-sm font-semibold tracking-tight text-navy shadow-[0_4px_20px_-6px_rgba(255,213,2,0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-saffron-600"
@@ -100,8 +108,10 @@ import { site } from "../data/site";
           <address class="not-italic text-lg leading-relaxed">
             {site.name}<br />
             {site.address.line1}<br />
-            {site.address.region}, Ireland
+            {site.address.locality}, {site.address.region}<br />
+            {site.address.postalCode}, Ireland
           </address>
+          <a href={site.directions} target="_blank" rel="noopener" class="mt-4 block font-medium underline underline-offset-4">Get directions →</a>
           {site.email && (
             <a href={`mailto:${site.email}`} class="mt-4 block font-medium text-navy underline underline-offset-4">{site.email}</a>
           )}

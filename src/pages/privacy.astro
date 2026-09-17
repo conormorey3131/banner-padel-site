@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import { site } from "../data/site";
+---
+<Layout title="Privacy Notice" description="How Banner Padel handles website enquiries and information shared through booking and other services.">
+  <PageHero eyebrow="Your information" title="Privacy notice." intro="This notice explains the information used when you browse our website, send an enquiry or follow a booking link." />
+  <article class="privacy-copy mx-auto max-w-3xl px-6 pb-24 text-muted">
+    <p>Last updated: 17 September 2026.</p>
+    <h2>Who to contact</h2>
+    <p>Banner Padel is responsible for the enquiries it receives through this website. You can contact us at <a href={`mailto:${site.email}`}>{site.email}</a> or write to Banner Padel, {site.address.line1}, {site.town}, {site.county}, {site.address.postalCode}, Ireland.</p>
+    <h2>Information you provide</h2>
+    <p>The contact form asks for your name, email address, enquiry topic and message. We use these details to answer your question and arrange services you request. Please avoid including payment card details, medical information or other sensitive personal information in your message.</p>
+    <p>For enquiries about a service you want to book, processing is necessary to take steps at your request before entering a contract. For general questions, our legitimate interest is responding to people who contact the club. Sending an enquiry does not subscribe you to marketing.</p>
+    <h2>How enquiries reach us</h2>
+    <p>Our form uses FormSubmit to process your submission and deliver it to our email inbox. Its spam checks may use Google reCAPTCHA. FormSubmit states that submissions are available in its archive for 30 days. See <a href="https://formsubmit.co/privacy.pdf">FormSubmit’s privacy notice</a>, its <a href="https://formsubmit.co/documentation">service documentation</a> and <a href="https://policies.google.com/privacy">Google’s privacy policy</a>.</p>
+    <p>Our email and website hosting providers also process information needed to deliver their services. Website requests may include technical information such as your IP address and browser details.</p>
+    <h2>Bookings, apps and external services</h2>
+    <p>Court and session bookings are handled by Playtomic. The embedded calendar on our booking page connects your browser to Playtomic. Booking, account and payment information is handled under the privacy information shown by Playtomic when you use its service.</p>
+    <p>The website loads fonts from Google Fonts, which receives the technical information needed to serve them. Links to maps, social networks and app stores take you to separate services with their own privacy notices. This notice covers the website; check the privacy information in the Banner Padel app for its data practices.</p>
+    <h2>Cookies and international processing</h2>
+    <p>This website does not add its own advertising or analytics tracking. External booking and spam-prevention services may use cookies or similar technologies as described in their notices. These providers may process information outside Ireland or the European Economic Area. Contact us if you need details about the providers and safeguards relevant to your enquiry.</p>
+    <h2>How long information is needed</h2>
+    <p>Enquiry correspondence is needed while we handle your request and any resulting booking or follow-up. The appropriate retention period depends on the nature of the enquiry, whether it becomes a customer record, and any applicable record-keeping requirements or dispute. Contact us to ask about retention or deletion of your specific correspondence.</p>
+    <h2>Your choices and rights</h2>
+    <p>Providing your details is voluntary, but we need an email address to reply to an online enquiry. You can email us directly if you prefer not to use the form.</p>
+    <p>Depending on the circumstances, you can request access, correction, deletion, restriction or portability of your personal data, and object to processing based on legitimate interests. Email <a href={`mailto:${site.email}`}>{site.email}</a> to make a request. We may need to verify your identity. You also have the right to complain to the Irish <a href="https://www.dataprotection.ie/">Data Protection Commission</a>.</p>
+  </article>
+</Layout>
+<style>
+  .privacy-copy h2 { margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 700; color: var(--color-navy); }
+  .privacy-copy p { margin-top: 1rem; line-height: 1.8; }
+  .privacy-copy a { text-decoration: underline; text-underline-offset: 3px; color: var(--color-navy); overflow-wrap: anywhere; }
+</style>

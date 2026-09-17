@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import Button from "../components/Button.astro";
+---
+<Layout title="Page not found" description="Find your way back to Banner Padel." noindex>
+  <PageHero eyebrow="404 · Out of bounds" title="This one missed the court." intro="We couldn’t find that page. Head back home or find your next session." />
+  <section class="mx-auto flex max-w-6xl flex-wrap gap-4 px-6 pb-24">
+    <Button href="/">Back to home</Button>
+    <Button href="/book/" variant="outline">Book a court</Button>
+  </section>
+</Layout>

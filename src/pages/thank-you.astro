@@ -1,0 +1,13 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import Button from "../components/Button.astro";
+import { site } from "../data/site";
+---
+<Layout title="Thank you" description="Thanks for contacting Banner Padel." noindex>
+  <PageHero eyebrow="Enquiry sent" title="Thanks for getting in touch." intro="We’ll respond using the email address you provided." />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <p class="mb-8 text-muted">Need to add anything? Email <a class="underline" href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    <Button href="/">Back to home</Button>
+  </section>
+</Layout>

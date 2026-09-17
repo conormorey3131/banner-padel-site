@@ -9,8 +9,9 @@ interface Props {
   description: string;
   /** Omit the page-name prefix on the home page. */
   bareTitle?: boolean;
+  noindex?: boolean;
 }
-const { title, description, bareTitle = false } = Astro.props;
+const { title, description, bareTitle = false, noindex = false } = Astro.props;
 
 const fullTitle = bareTitle ? title : `${title} | ${site.name}`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
@@ -21,8 +22,20 @@ const schema = {
   name: site.name,
   description: site.tagline,
   url: site.url,
+  email: site.email,
+  telephone: site.phone,
+  openingHoursSpecification: site.hours.map((hours) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: hours.schemaDays.map((day) => `https://schema.org/${day}`),
+    opens: hours.opens,
+    closes: hours.closes,
+  })),
+  image: `${site.url}/social-share.png`,
+  hasMap: site.directions,
   address: {
     "@type": "PostalAddress",
+    streetAddress: site.address.line1,
+    postalCode: site.address.postalCode,
     addressLocality: site.town,
     addressRegion: site.county,
     addressCountry: site.address.country,
@@ -38,6 +51,7 @@ const schema = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
@@ -47,6 +61,13 @@ const schema = {
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="en_IE" />
+    <meta property="og:image" content={`${site.url}/social-share.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Banner Padel — indoor padel in Ennis, Co. Clare" />
+    <meta name="twitter:image" content={`${site.url}/social-share.png`} />
+    <meta name="twitter:image:alt" content="Banner Padel — indoor padel in Ennis, Co. Clare" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />

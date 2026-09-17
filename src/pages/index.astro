@@ -5,6 +5,7 @@ import Button from "../components/Button.astro";
 import Section from "../components/Section.astro";
 import Feature from "../components/Feature.astro";
 import BookingCta from "../components/BookingCta.astro";
+import AppPromo from "../components/AppPromo.astro";
 import court from "../assets/padel-court-ennis.webp";
 import net from "../assets/padel-net.webp";
 
@@ -34,8 +35,8 @@ const waysToPlay = [
     eyebrow: "Get competitive",
     title: "Leagues & socials",
     body: "Americanos, club leagues, tournaments and social nights. Come on your own and leave with a regular four.",
-    href: "/contact/",
-    cta: "Get on the list",
+    href: "/timetable/",
+    cta: "See the timetable",
   },
 ];
 ---
@@ -223,6 +224,8 @@ const waysToPlay = [
       />
     </div>
   </Section>
+
+  <AppPromo />
 
   <BookingCta />
 </Layout>
