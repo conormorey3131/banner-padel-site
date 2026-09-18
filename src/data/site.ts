@@ -9,7 +9,7 @@ export const site = {
 
   // Address supplied by the club.
   address: {
-    line1: "Quin Rd, Business Park",
+    line1: "Quin Road Business Park",
     locality: "Ennis",
     postalCode: "V95 D592",
     region: "Co. Clare",
