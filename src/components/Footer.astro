@@ -14,17 +14,17 @@ const year = new Date().getFullYear();
       <div>
         <Image src={wordmark} alt={site.name} width={220} height={87} class="h-auto w-[200px]" loading="lazy" />
         <p class="mt-6 max-w-xs leading-relaxed text-bone/60">
-          {site.tagline} — six full panoramic indoor courts in {site.town}, {site.county}.
+          {site.tagline} — six full Super Panoramic indoor courts in {site.town}, {site.county}.
         </p>
         <div class="mt-7">
-          <Button href="/book/">Book a court</Button>
+          <Button href={site.booking}>Book a court</Button>
         </div>
       </div>
 
       <div>
         <h2 class="eyebrow mb-5 text-saffron">Explore</h2>
         <ul class="space-y-3">
-          <li><a href="/book/" class="text-bone/70 transition-colors hover:text-saffron">Book a court</a></li>
+          <li><a href={site.booking} class="text-bone/70 transition-colors hover:text-saffron">Book a court</a></li>
           {nav.map((item) => (
             <li><a href={item.href} class="text-bone/70 transition-colors hover:text-saffron">{item.label}</a></li>
           ))}
@@ -44,6 +44,12 @@ const year = new Date().getFullYear();
         {site.phone && (
           <a href={`tel:${site.phone.replace(/\s/g, "")}`} class="mt-1 block text-bone/70 transition-colors hover:text-saffron">{site.phone}</a>
         )}
+        <div class="mt-6">
+          <h2 class="eyebrow mb-3 text-saffron">Opening hours</h2>
+          <dl class="space-y-2 text-sm text-bone/70">
+            {site.hours.map(row => (<div><dt>{row.days}</dt><dd class="mt-1">{row.time}</dd></div>))}
+          </dl>
+        </div>
         <div class="mt-6">
           <Social tone="light" showHandle={false} />
         </div>
