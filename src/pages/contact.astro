@@ -19,7 +19,7 @@ import { site } from "../data/site";
 
   <Section tone="bone" class="!pt-16">
     <div class="grid gap-14 lg:grid-cols-[1fr_0.85fr] lg:gap-20">
-      <form class="reveal space-y-6" method="POST" action={`https://formsubmit.co/${site.email}`}>
+      <form id="enquiry" class="reveal space-y-6" method="POST" action={`https://formsubmit.co/${site.email}`}>
         <input type="hidden" name="_subject" value="Banner Padel — website enquiry" />
         <input type="hidden" name="_next" value={`${site.url}/thank-you/`} />
         <input type="hidden" name="_template" value="table" />
@@ -59,7 +59,8 @@ import { site } from "../data/site";
             class="w-full rounded-xl border border-line bg-white px-4 py-3.5 text-navy transition-colors focus:border-navy/40"
           >
             <option>Coaching or lessons</option>
-            <option>Group or corporate booking</option>
+            <option value="groups">Group or corporate booking</option>
+            <option value="membership">Membership</option>
             <option>Leagues, socials and events</option>
             <option>Junior programmes</option>
             <option>Something else</option>
@@ -99,7 +100,7 @@ import { site } from "../data/site";
             in the booking calendar.
           </p>
           <div class="mt-6">
-            <Button href="/book/">See availability</Button>
+            <Button href={site.booking}>See availability</Button>
           </div>
         </div>
 
@@ -145,3 +146,9 @@ import { site } from "../data/site";
     </div>
   </Section>
 </Layout>
+
+<script>
+  const topic = new URLSearchParams(window.location.search).get("topic");
+  const select = document.querySelector<HTMLSelectElement>("#topic");
+  if (select && (topic === "membership" || topic === "groups")) select.value = topic;
+</script>

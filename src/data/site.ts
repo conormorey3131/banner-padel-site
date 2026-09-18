@@ -18,13 +18,12 @@ export const site = {
 
   phone: "+353 85 244 6686",
   email: "info@bannerpadel.ie",
-  directions: "https://www.google.com/maps/dir/?api=1&destination=Quin+Rd,+Business+Park,+Ennis,+Co.+Clare,+V95+D592,+Ireland",
+  directions: "https://maps.google.com/?cid=10938682595280522135",
 
-  // Opening hours from the supplied Playtomic screenshot.
+  // Opening hours confirmed by the club.
   hours: [
-    { days: "Monday – Friday", time: "09:00 – 23:00", opens: "09:00", closes: "23:00", schemaDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] },
-    { days: "Saturday", time: "09:00 – 20:00", opens: "09:00", closes: "20:00", schemaDays: ["Saturday"] },
-    { days: "Sunday", time: "09:00 – 20:00", opens: "09:00", closes: "20:00", schemaDays: ["Sunday"] },
+    { days: "Monday–Friday", time: "9am–11pm", opens: "09:00", closes: "23:00", schemaDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] },
+    { days: "Saturday–Sunday", time: "9am–8pm", opens: "09:00", closes: "20:00", schemaDays: ["Saturday", "Sunday"] },
   ],
 
   booking: "https://playtomic.com/clubs/banner-padel",
@@ -46,6 +45,7 @@ export const site = {
 } as const;
 
 export const nav = [
+  { label: "Membership", href: "/#membership" },
   { label: "Timetable", href: "/timetable/" },
   { label: "Coaching", href: "/coaching/" },
   { label: "The Venue", href: "/venue/" },
