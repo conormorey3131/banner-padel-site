@@ -35,7 +35,7 @@ saffron is reserved for calls to action.
 ## Launch setup
 
 - Contact form posts to FormSubmit for `info@bannerpadel.ie`, with a honeypot and the provider’s default CAPTCHA. After deploying, submit a test enquiry and confirm FormSubmit’s activation email in that inbox, then verify a second enquiry arrives. No test email has been sent during development.
-- Successful submissions redirect to `https://www.bannerpadel.ie/thank-you/`. Test the return journey on the production domain.
+- Successful submissions redirect to `https://bannerpadel.ie/thank-you/`. Test the return journey on the production domain.
 - Club address, directions and phone (+353 85 244 6686) are set. Confirmed opening hours: Monday–Friday 09:00–23:00; Saturday–Sunday 09:00–20:00. Phone and hours are included in local-business structured data.
 - Public booking links use `https://playtomic.com/clubs/banner-padel`. The calendar retains its existing dedicated embed endpoint.
 - Weekly timetable at `/timetable/` is transcribed from the club-supplied poster. Coaching prices remain unconfirmed.
@@ -44,12 +44,12 @@ saffron is reserved for calls to action.
 - Privacy notice at `/privacy/`: club must confirm controller/legal identity, actual email/hosting providers, retention criteria and any international-transfer safeguards before publishing. It describes the current website integrations; it is not an audit of the club’s wider data practices.
 - Custom not-found page builds to `dist/404.html`. Verify hosting returns it with a 404 status for unknown URLs.
 - Final checks: mobile booking, app links/QR codes, contact delivery and more venue photography.
-- Move the `bannerpadel.ie` domain from the current site when ready. Hosting changes have not been made here.
+- Production uses the existing `banner-padel` repository and GitHub Pages configuration. Build with `npm run build`; preserve its CNAME and Google verification file, and include `.nojekyll` so optimized assets are served. Legacy `about.html` and `contact.html` URLs redirect to their new pages.
 
 ## Domain
 
 The live site currently runs from the separate `banner-padel` repo, which holds the
-`CNAME` for `www.bannerpadel.ie`. This repo has no CNAME on purpose.
+`CNAME` for `bannerpadel.ie`. This repo has no CNAME on purpose.
 
 ## Client preview
 
@@ -60,4 +60,4 @@ The preview is public at https://conormorey3131.github.io/banner-padel-site/ and
 assets and the form return URL for the repository subdirectory. `npm run build` remains the
 production build. No custom domain is assigned to this preview.
 
-Do not switch the live domain to this version until the final €350 payment is received.
+Conor confirmed receipt of the final €350 payment and authorized the production launch on 22 September 2026.

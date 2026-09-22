@@ -14,7 +14,7 @@ async function prepare(directory) {
     if (entry.isDirectory()) { await prepare(file); continue; }
     if (!/\.(html|css|xml)$/.test(entry.name)) continue;
     let text = await readFile(file, 'utf8');
-    text = text.replaceAll('https://www.bannerpadel.ie', origin);
+    text = text.replaceAll('https://www.bannerpadel.ie', origin).replaceAll('https://bannerpadel.ie', origin);
     // Astro image srcsets and CSS resource URLs also need the project subdirectory.
     text = text.replaceAll('/_astro/', `${base}/_astro/`);
     text = text.replace(/\b(href|src|action)="\/(?!\/)([^" ]*)"/g, (match, attr, target) => {

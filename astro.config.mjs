@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.bannerpadel.ie',
+  site: 'https://bannerpadel.ie',
   vite: {
     plugins: [tailwindcss()]
   }

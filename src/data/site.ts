@@ -5,7 +5,7 @@ export const site = {
   tagline: "Clare's first indoor padel club",
   town: "Ennis",
   county: "Co. Clare",
-  url: "https://www.bannerpadel.ie",
+  url: "https://bannerpadel.ie",
 
   // Address supplied by the club.
   address: {
