@@ -9,6 +9,7 @@ import BookingCta from "../components/BookingCta.astro";
 import AppPromo from "../components/AppPromo.astro";
 import court from "../assets/padel-court-ennis.webp";
 import net from "../assets/padel-net.webp";
+import corporateGroup from "../assets/banner-padel-corporate-group.jpg";
 
 const stats = [
   { value: "6", label: "Super Panoramic courts" },
@@ -21,21 +22,21 @@ const waysToPlay = [
   {
     eyebrow: "Pay & play",
     title: "Book a court",
-    body: "Grab 60, 90 or 120 minutes with three friends. Courts are live on Playtomic — pick a slot, pay online, turn up and play.",
+    body: "Grab 60, 90 or 120 minutes with your group. Courts are live on Playtomic — pick a slot, book online and turn up ready to play.",
     href: site.booking,
     cta: "See availability",
   },
   {
     eyebrow: "Get better",
     title: "Coaching",
-    body: "One-to-one sessions, group clinics and junior programmes. The quickest way from never-held-a-racket to holding your own.",
+    body: "One-to-one sessions, group coaching and junior programmes for every level — from complete beginners to experienced players looking to improve.",
     href: "/coaching/",
     cta: "Explore coaching",
   },
   {
     eyebrow: "Get competitive",
     title: "Leagues & socials",
-    body: "Americanos, club leagues, tournaments and social nights. Come on your own and leave with a regular four.",
+    body: "Coffee Clubs, Ladies & Men’s Socials, Americanos, Padel & Pizza, leagues and tournaments. Come on your own, meet other players and get on court.",
     href: "/timetable/",
     cta: "See the timetable",
   },
@@ -118,14 +119,10 @@ const waysToPlay = [
     <div class="reveal mx-auto max-w-3xl text-center">
       <h2 class="mb-6 text-4xl font-extrabold tracking-tight md:text-5xl">MORE THAN A GAME.</h2>
       <p class="text-[clamp(1.5rem,3.2vw,2.25rem)] font-display font-semibold leading-[1.3] tracking-tight">
-        Padel is the easiest racket sport to fall in love with. Four players, glass
-        walls, one rally that goes on far longer than it should — and everyone,
-        whatever their level, in the same game.
+        Padel is easy to learn and hard to stop playing. Four players, one court and a game that’s social from the very first point.
       </p>
       <p class="mt-8 text-lg leading-relaxed text-muted">
-        We built Banner Padel so the people of Clare wouldn’t have to travel to play.
-        Super Panoramic glass courts, proper lighting, no weather to work around, and a
-        clubhouse worth staying in afterwards.
+        We built Banner Padel so the people of Clare wouldn’t have to travel to play. Six Super Panoramic indoor courts, Mondo XN Supercourt turf, proper lighting, no weather to work around, and a clubhouse worth staying in afterwards.
       </p>
     </div>
   </Section>
@@ -158,7 +155,7 @@ const waysToPlay = [
     tone="white"
     eyebrow="Ways to play"
     title="However you want to play it."
-    intro="Book with your own four, come alone to a social, or start from scratch with a coach. All three work here."
+    intro="Book with your group, come on your own to a social, or start from scratch with a coach. However you want to play, there’s a place for you at Banner."
   >
     <div class="mt-14 grid gap-px overflow-hidden rounded-2xl bg-line md:grid-cols-3">
       {
@@ -196,10 +193,10 @@ const waysToPlay = [
           You'll be rallying inside ten minutes.
         </h2>
         <p class="mt-6 text-lg leading-relaxed text-bone/75">
-          Padel is doubles-only, played on an enclosed court about a third smaller than
-          a tennis court. The walls are in play, like squash. The rackets are solid and
-          light, the serve is underarm, and the scoring is the same as tennis. It is
-          genuinely one of the easiest sports there is to pick up on day one.
+          Padel is usually played as doubles on an enclosed court about a third smaller than a tennis court. The walls are in play, the rackets are solid and lightweight, the serve is underarm and the scoring is the same as tennis.
+        </p>
+        <p class="mt-5 text-lg leading-relaxed text-bone/75">
+          It’s easy to learn, social from the start and seriously addictive once you get going.
         </p>
         <div class="mt-9">
           <Button href="/what-is-padel/" variant="light">How padel works</Button>
@@ -219,27 +216,27 @@ const waysToPlay = [
       <Feature
         icon="court"
         title="Six Super Panoramic courts"
-        body="Six Super Panoramic indoor courts featuring Mondo Supercourt XN turf, designed to deliver a premium playing experience all year round."
+        body="Six Super Panoramic indoor courts featuring Mondo XN Supercourt turf, designed to deliver a premium playing experience all year round."
       />
       <Feature
         icon="cafe"
         title="Café & lounge"
-        body="Proper coffee, cold drinks and somewhere comfortable to sit and watch the court while you wait on your slot."
+        body="Proper coffee, cold drinks and a comfortable place to sit, catch up and watch the action on court."
       />
       <Feature
         icon="coach"
         title="Coaching for all levels"
-        body="One-to-one and group lessons from first-timers through to players wanting to sharpen a specific shot."
+        body="One-to-one and group coaching for complete beginners through to experienced players looking to improve their game."
       />
       <Feature
         icon="junior"
         title="Junior programmes"
-        body="Structured coaching for kids who want a racket sport that is fast, social and forgiving to learn."
+        body="Structured coaching for juniors in a fun, social environment, building skills, confidence and a love of the game."
       />
       <Feature
         icon="league"
-        title="Leagues & tournaments"
-        body="Club leagues, Americanos and open tournaments running through the year for every standard."
+        title="Leagues, Socials & Tournaments"
+        body="Weekly socials, Americanos, leagues and tournaments running throughout the year."
       />
       <Feature
         icon="gear"
@@ -249,8 +246,16 @@ const waysToPlay = [
     </div>
   </Section>
 
-  <Section tone="white" eyebrow="Corporate & Group Events" title="Bring your people together." intro="A day on court for your team, school, club or private group. Get in touch and we’ll help plan your visit.">
+  <Section id="corporate-events" tone="white" eyebrow="Corporate & Group Events" title="Bring your people together." intro="Corporate days, team building, schools, sports clubs and private groups. We’ll organise the padel, equipment and format — you bring the people.">
     <div class="reveal mt-8"><Button href="/contact/?topic=groups#enquiry">Enquire</Button></div>
+    <Image
+      src={corporateGroup}
+      alt="A corporate group with padel rackets gathered at Banner Padel in Ennis"
+      widths={[480, 768, 1280]}
+      sizes="(min-width: 1200px) 1152px, calc(100vw - 48px)"
+      class="reveal mt-12 h-auto w-full rounded-2xl"
+      loading="lazy"
+    />
   </Section>
 
   <AppPromo />
