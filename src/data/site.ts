@@ -48,6 +48,7 @@ export const nav = [
   { label: "Membership", href: "/#membership" },
   { label: "Timetable", href: "/timetable/" },
   { label: "Coaching", href: "/coaching/" },
+  { label: "Leagues", href: "https://league.bannerpadel.ie" },
   { label: "The Venue", href: "/venue/" },
   { label: "What is Padel", href: "/what-is-padel/" },
   { label: "Contact", href: "/contact/" },
