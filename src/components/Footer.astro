@@ -26,7 +26,7 @@ const year = new Date().getFullYear();
         <ul class="space-y-3">
           <li><a href={site.booking} class="text-bone/70 transition-colors hover:text-saffron">Book a court</a></li>
           {nav.map((item) => (
-            <li><a href={item.href} class="text-bone/70 transition-colors hover:text-saffron">{item.label}</a></li>
+            <><li><a href={item.href} class="text-bone/70 transition-colors hover:text-saffron">{item.label}</a></li>{item.label === 'Leagues' && (<li><a href="https://league.bannerpadel.ie/box/rules" class="text-bone/70 transition-colors hover:text-saffron">Box League Rules</a></li>)}</>
           ))}
           <li><a href="/#app" class="text-bone/70 transition-colors hover:text-saffron">Get the app</a></li>
         </ul>
