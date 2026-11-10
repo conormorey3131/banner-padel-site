@@ -6,6 +6,15 @@ import Section from "../components/Section.astro";
 import Feature from "../components/Feature.astro";
 import BookingCta from "../components/BookingCta.astro";
 import court from "../assets/padel-court-ennis.webp";
+import gallery1 from "../assets/banner-padel-gallery-1.jpg";
+import gallery2 from "../assets/banner-padel-gallery-2.jpg";
+import gallery3 from "../assets/banner-padel-gallery-3.jpg";
+import gallery4 from "../assets/banner-padel-gallery-4.jpg";
+import gallery5 from "../assets/banner-padel-gallery-5.jpg";
+import gallery6 from "../assets/banner-padel-gallery-6.jpg";
+import gallery7 from "../assets/banner-padel-gallery-7.jpg";
+import gallery8 from "../assets/banner-padel-gallery-8.jpg";
+import gallery9 from "../assets/banner-padel-gallery-9.jpg";
 import { site } from "../data/site";
 
 const firstVisit = [
@@ -13,6 +22,17 @@ const firstVisit = [
   { title: "Wear clean trainers", body: "Clean sports or court shoes with good grip are recommended. Please make sure footwear is clean before entering the courts." },
   { title: "Bring a water bottle", body: "There is water on site and the café is open, but a bottle courtside saves you the walk between games." },
   { title: "No kit needed", body: "Rackets are available to hire and balls are available to buy at reception. Turn up with trainers and you are ready to play." },
+];
+const gallery = [
+  { src: gallery1, alt: "A player smiling on court behind the net at Banner Padel" },
+  { src: gallery2, alt: "Two players at the back glass during a game at Banner Padel" },
+  { src: gallery3, alt: "A player mid-shot during a match at Banner Padel" },
+  { src: gallery4, alt: "The Banner Padel sign seen through the court glass" },
+  { src: gallery5, alt: "The walkway between the courts at Banner Padel" },
+  { src: gallery6, alt: "A court at Banner Padel with the club sign on the wall behind the net" },
+  { src: gallery7, alt: "Court 5 at Banner Padel with a game in progress" },
+  { src: gallery8, alt: "Match play across the net at Banner Padel" },
+  { src: gallery9, alt: "Looking along the line of nets between courts at Banner Padel" },
 ];
 ---
 
@@ -36,6 +56,21 @@ const firstVisit = [
       loading="lazy"
     />
   </section>
+
+  <Section tone="white" eyebrow="Gallery" title="Inside the club.">
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {gallery.map((photo) => (
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          widths={[480, 760]}
+          sizes="(min-width: 1024px) 370px, (min-width: 640px) calc(50vw - 40px), calc(100vw - 48px)"
+          class="reveal aspect-[2/3] h-auto w-full rounded-2xl object-cover"
+          loading="lazy"
+        />
+      ))}
+    </div>
+  </Section>
 
   <Section
     tone="bone"
