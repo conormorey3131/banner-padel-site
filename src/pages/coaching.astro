@@ -6,34 +6,50 @@ import Section from "../components/Section.astro";
 import Button from "../components/Button.astro";
 import BookingCta from "../components/BookingCta.astro";
 import court from "../assets/padel-court-ennis.webp";
+import coachPortrait from "../assets/coach-jesus-maicas.jpg";
+import coachAction from "../assets/coach-jesus-action.jpg";
 import { site } from "../data/site";
 
-// TODO: confirm session lengths and pricing with the club before launch.
 const programmes = [
   {
-    name: "One-to-one",
-    who: "Any level",
-    price: "TODO",
-    body: "You and a coach for a full hour. The fastest way to fix a specific shot — the bandeja, the wall defence, the serve you never trust.",
-    points: ["60 minutes", "Video feedback on request", "Rackets provided"],
-    featured: false,
-  },
-  {
-    name: "Group clinics",
-    who: "Beginner to intermediate",
-    price: "TODO",
-    body: "Small groups working through the shots that actually decide padel points, with plenty of live play rather than queueing for a feed.",
-    points: ["90 minutes", "Max 4 players per coach", "Weekly blocks"],
+    name: "Junior Padel Academies",
+    who: "Saturdays · Ages 6–11 & 12–15",
+    tag: "New · Starts 21 November",
+    body: "Four Saturday academies with Jesús, starting Saturday 21 November. Structured coaching in a fun, social environment, with rackets and balls included.",
+    points: ["Ages 6–11: Saturdays 1–2pm", "Ages 12–15: Saturdays 2–3pm", "€10 per child per session", "Max 8 children per academy", "Beginners welcome"],
     featured: true,
+    cta: "Book a place",
   },
   {
-    name: "Junior programme",
-    who: "Ages 8–16",
-    price: "TODO",
-    body: "Structured coaching for juniors in a fun, social environment, building skills, confidence and a love of the game.",
-    points: ["Term-time blocks", "All equipment provided", "Beginner groups available"],
+    name: "Ladies' Beginners Classes",
+    who: "Tuesdays · 7–8:30pm",
+    body: "A friendly introduction to padel, helping you build skills and confidence.",
+    points: ["Tuesdays 7–8:30pm", "Beginners welcome", "Friendly, social group"],
     featured: false,
+    cta: "Enquire",
   },
+  {
+    name: "Men's Beginner/Improver Classes",
+    who: "Wednesdays · 7–8:30pm",
+    body: "Develop your technique, improve your game and meet other players.",
+    points: ["Wednesdays 7–8:30pm", "Beginners & improvers", "Technique and match play"],
+    featured: false,
+    cta: "Enquire",
+  },
+];
+
+const singleSessions = [
+  { name: "1-to-1", price: "€80", each: null },
+  { name: "2-to-1", price: "€100", each: "€50 each" },
+  { name: "3-to-1", price: "€120", each: "€40 each" },
+  { name: "4-to-1", price: "€140", each: "€35 each" },
+];
+
+const blockSessions = [
+  { name: "1-to-1", price: "€300", each: null },
+  { name: "2-to-1", price: "€380", each: "€190 each" },
+  { name: "3-to-1", price: "€460", each: "€153.33 each" },
+  { name: "4-to-1", price: "€540", each: "€135 each" },
 ];
 
 const path = [
@@ -46,7 +62,7 @@ const path = [
 
 <Layout
   title="Coaching & Lessons"
-  description="Padel coaching in Ennis, Co. Clare — one-to-one lessons, group clinics and junior programmes at Banner Padel, for complete beginners through to competitive players."
+  description="Padel coaching in Ennis, Co. Clare with head coach Jesús Maicas — junior academies, ladies' and men's beginner classes, private lessons and block coaching at Banner Padel."
 >
   <PageHero
     eyebrow="Coaching"
@@ -54,7 +70,58 @@ const path = [
     intro="Padel is easy to start and deep to master. An hour with a coach early on saves you months of picking up habits you'll only have to unlearn."
   />
 
-  <Section tone="bone" eyebrow="Programmes" title="Pick your session.">
+  <section class="bg-bone px-6 py-20 md:py-28">
+    <div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+      <div class="reveal overflow-hidden rounded-2xl">
+        <Image
+          src={coachPortrait}
+          alt="Jesús Maicas, padel coach at Banner Padel"
+          widths={[480, 800]}
+          sizes="(min-width: 1024px) 46vw, 92vw"
+          class="h-[420px] w-full object-cover object-top md:h-[560px]"
+          loading="lazy"
+        />
+      </div>
+      <div class="reveal">
+        <p class="eyebrow mb-4 text-navy/45">Meet our coach</p>
+        <h2 class="text-4xl font-bold tracking-tight md:text-5xl">Jesús Maicas</h2>
+        <p class="mt-6 text-lg leading-relaxed text-muted">
+          Hello everyone, my name is Jesús Maicas, I am 26 years old, and I am delighted
+          to introduce myself as the new padel coach at Banner Padel.
+        </p>
+        <p class="mt-4 leading-relaxed text-muted">
+          I have been playing padel competitively at national level since the age of 15.
+          I have over six years of coaching experience in Madrid, Spain, having worked as
+          a padel instructor at DN Padel Academy, one of the most prestigious and
+          well-recognised padel academies in Madrid.
+        </p>
+        <p class="mt-4 leading-relaxed text-muted">
+          I am truly excited and motivated to embark on this new chapter with Banner
+          Padel. I look forward to sharing my passion for the sport, helping players
+          develop their skills, and contributing to the growth of the padel community.
+          I look forward to meeting you all and seeing you on the courts very soon!
+        </p>
+        <ul class="mt-7 space-y-2.5">
+          {
+            [
+              "Competing at national level in Spain since the age of 15",
+              "Over six years of coaching experience in Madrid",
+              "Instructor at DN Padel Academy, Madrid",
+            ].map((point) => (
+              <li class="flex items-start gap-3">
+                <svg class="mt-1 shrink-0 text-saffron-600" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 8.5l3.5 3.5L13 4" />
+                </svg>
+                <span class="text-sm text-navy/75">{point}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <Section tone="white" eyebrow="Classes & academies" title="Pick your session.">
     <div class="mt-14 grid gap-7 lg:grid-cols-3">
       {
         programmes.map((programme) => (
@@ -67,7 +134,7 @@ const path = [
             ]}
           >
             {programme.featured && (
-              <p class="eyebrow mb-5 text-saffron">Most popular</p>
+              <p class="eyebrow mb-5 text-saffron">{programme.tag}</p>
             )}
             <h2 class="font-display text-2xl font-bold tracking-tight">{programme.name}</h2>
             <p
@@ -105,7 +172,7 @@ const path = [
             </ul>
             <div class="mt-8">
               <Button href="/contact/" variant={programme.featured ? "light" : "outline"} class="w-full">
-                Enquire
+                {programme.cta}
               </Button>
             </div>
           </div>
@@ -113,9 +180,67 @@ const path = [
       }
     </div>
     <p class="reveal mt-8 text-sm text-muted">
-      Pricing is being finalised — contact us for current rates and available blocks.
+      To book a junior academy place or ask about a class, message the club or use the{" "}
+      <a href="/contact/" class="font-medium text-navy underline underline-offset-4 hover:text-saffron-600">
+        contact page
+      </a>
+      .
     </p>
   </Section>
+
+  <section class="bg-navy px-6 py-20 text-bone md:py-28">
+    <div class="mx-auto max-w-6xl">
+      <header class="reveal max-w-2xl">
+        <p class="eyebrow mb-4 text-saffron">Private lessons</p>
+        <h2 class="text-4xl font-bold tracking-tight md:text-5xl">
+          Private lessons &amp; block coaching.
+        </h2>
+        <p class="mt-5 text-lg leading-relaxed text-bone/70">
+          Private lessons with Jesús, on your own or with a small group. Every session is
+          60 minutes. Book a single session, or a four-week block with one session a week.
+        </p>
+      </header>
+      <div class="mt-14 grid gap-7 lg:grid-cols-3">
+        <div class="reveal overflow-hidden rounded-2xl">
+          <Image
+            src={coachAction}
+            alt="Jesús Maicas playing a smash on court at Banner Padel"
+            widths={[480, 800]}
+            sizes="(min-width: 1024px) 30vw, 92vw"
+            class="h-64 w-full object-cover object-top lg:h-full"
+            loading="lazy"
+          />
+        </div>
+        {
+          [
+            { title: "Single sessions", sub: "Pay as you go · 60 minutes", rows: singleSessions },
+            { title: "Four-week blocks", sub: "One session a week · 60 minutes", rows: blockSessions },
+          ].map((panel) => (
+            <div class="reveal rounded-2xl bg-white/5 p-8 ring-1 ring-white/15 md:p-9">
+              <h3 class="font-display text-2xl font-bold tracking-tight">{panel.title}</h3>
+              <p class="mt-1.5 text-sm text-bone/55">{panel.sub}</p>
+              <ul class="mt-4 divide-y divide-white/10">
+                {panel.rows.map((row) => (
+                  <li class="flex items-baseline justify-between gap-4 py-3.5">
+                    <span class="text-bone/85">{row.name}</span>
+                    <span class="text-right font-display text-lg font-bold">
+                      {row.price}
+                      {row.each && (
+                        <span class="block text-xs font-normal text-bone/50">{row.each}</span>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <div class="reveal mt-10">
+        <Button href="/contact/" variant="light">Enquire about lessons</Button>
+      </div>
+    </div>
+  </section>
 
   <Section tone="white" eyebrow="The pathway" title="Wherever you're starting from.">
     <div class="mt-14 grid gap-px overflow-hidden rounded-2xl bg-line sm:grid-cols-2 lg:grid-cols-4">
