@@ -16,7 +16,7 @@ export const site = {
     country: "IE",
   },
 
-  phone: "+353 85 244 6686",
+  phone: "+353 87 474 1442",
   email: "info@bannerpadel.ie",
   directions: "https://maps.google.com/?cid=10938682595280522135",
 
