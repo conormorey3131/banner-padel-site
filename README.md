@@ -36,7 +36,7 @@ saffron is reserved for calls to action.
 
 - Contact form posts to FormSubmit for `info@bannerpadel.ie`, with a honeypot and the provider’s default CAPTCHA. After deploying, submit a test enquiry and confirm FormSubmit’s activation email in that inbox, then verify a second enquiry arrives. No test email has been sent during development.
 - Successful submissions redirect to `https://bannerpadel.ie/thank-you/`. Test the return journey on the production domain.
-- Club address, directions and phone (+353 85 244 6686) are set. Confirmed opening hours: Monday–Friday 09:00–23:00; Saturday–Sunday 09:00–20:00. Phone and hours are included in local-business structured data.
+- Club address, directions and phone (+353 87 474 1442) are set. Confirmed opening hours: Monday–Friday 09:00–23:00; Saturday–Sunday 09:00–20:00. Phone and hours are included in local-business structured data.
 - Public booking links use `https://playtomic.com/clubs/banner-padel`. The calendar retains its existing dedicated embed endpoint.
 - Weekly timetable at `/timetable/` is transcribed from the club-supplied poster. Coaching prices remain unconfirmed.
 - Social preview card: `public/social-share.png`, editable source `public/social-share.svg`. Regenerate with `node scripts/build-social-share.mjs`.
